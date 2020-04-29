@@ -1,9 +1,11 @@
 # TollParking
 
-A Java API to manage a Toll parking
+Java API to manage a Toll parking.
+This library allows you to define your own parking according your pricing policy and uses to check in and check out cars.
 
 ##  Getting Started
 * JDK 14.0.1
+* Maven
 
 ## Used Library and plugin
 * [JUnit 5](https://junit.org/junit5/)
@@ -11,6 +13,16 @@ A Java API to manage a Toll parking
 
 ## JavaDoc
 Access to the JavaDoc by openning the file : ./doc/index.html
+
+## Build
+To create the build using Maven:
+
+```
+git https://github.com/BeringuieCeline/TollParking.git
+cd TollParking
+mvn clean package
+```
+
 
 ## Usage
 

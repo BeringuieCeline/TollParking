@@ -14,7 +14,7 @@ public abstract class Parking {
 	static String full="Parking full: no place available";
 	static String slotExisting="Slot parking cannot be added: already existing";
 	static String noSlotExisting="Slot parking cannot be removed: not existing";
-	static String wrongCartype="Wrong car type: should be part of the followong list:\"std\", \"20kw\", \"50kw\"";
+	static String wrongCartype="Wrong car type: should be part of the following list:\"std\", \"20kw\", \"50kw\"";
 	
 	public Parking(String name) {
 		parkingslots = new ArrayList<>();
