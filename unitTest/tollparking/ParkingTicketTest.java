@@ -12,10 +12,6 @@ import java.time.Month;
 import exception.NotAvailableSlotTypeException;
 
 public class ParkingTicketTest {
-
-	static String STDCAR = "std";
-	static String TKWCAR = "20kw";
-	static String FKWCAR = "50kw";
 	
 	static LocalDateTime entryTime = LocalDateTime.of(2020,Month.APRIL,27,6,30,40,50000);
 	static LocalDateTime exitTime = LocalDateTime.of(2020,Month.APRIL,27,10,30,40,50000);
@@ -23,7 +19,7 @@ public class ParkingTicketTest {
 	@Test
 	public void testParkingTicket() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
 			carticket.toString();
 		} catch (NotAvailableSlotTypeException err) {
@@ -34,7 +30,7 @@ public class ParkingTicketTest {
 	@Test
 	public void testGetEntryTime() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
 			assertEquals(entryTime,carticket.getEntryTime());
 		} catch (NotAvailableSlotTypeException err) {
@@ -45,7 +41,7 @@ public class ParkingTicketTest {
 	@Test
 	public void testGetParkSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
 			assertEquals(stdslot,carticket.getParkSlot());
 		} catch (NotAvailableSlotTypeException err) {
@@ -56,7 +52,7 @@ public class ParkingTicketTest {
 	@Test
 	public void testGetSlotname() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
 			assertEquals("A1",carticket.getSlotname());
 		} catch (NotAvailableSlotTypeException err) {

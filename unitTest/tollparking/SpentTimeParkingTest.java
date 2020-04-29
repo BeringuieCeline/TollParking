@@ -15,10 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SpentTimeParkingTest {
-
-	static String STDCAR = "std";
-	static String TKWCAR = "20kw";
-	static String FKWCAR = "50kw";
 	
 	static String parkingName = "Spent time parking";
 	static Double parkHourPrice = 2.0;
@@ -29,9 +25,9 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testCreateParkingwithDublicateSlots(){
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot1 = new ParkingSlot(TKWCAR,"B1");
-			ParkingSlot tkwslot2 = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot1 = new ParkingSlot(CarType.E20CAR,"B1");
+			ParkingSlot tkwslot2 = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot1, tkwslot2)); 	
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
 		} catch (NotAvailableSlotTypeException err) {
@@ -44,8 +40,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testBilling() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking(parkingName,slotsparkingtest, parkHourPrice);
 					
@@ -65,8 +61,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testCheckoutParkingSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 	
@@ -93,8 +89,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testAddparkSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 			
@@ -114,8 +110,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testAddExistingparkSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot,tkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 			
@@ -132,8 +128,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testRemoveparkSlot(){
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 			
@@ -153,9 +149,9 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testRemoveEmptyparkSlot(){
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");			
-			ParkingSlot fkwslot = new ParkingSlot(FKWCAR,"C1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");			
+			ParkingSlot fkwslot = new ParkingSlot(CarType.E50CAR,"C1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, fkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 			
@@ -172,7 +168,7 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testSpentTimeinParking() {
 		try {
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(tkwslot)); 
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest, parkHourPrice);
 					
@@ -190,11 +186,10 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testCheckinParkingSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			String newCar = STDCAR;
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot));
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
-			ParkingTicket carticket =  testparking.checkinParkingSlot(newCar, entryTime);
+			ParkingTicket carticket =  testparking.checkinParkingSlot(CarType.STDCAR, entryTime);
 			ParkingTicket ticketTest = new ParkingTicket(stdslot, entryTime);
 			
 			assertEquals(ticketTest,carticket);
@@ -215,12 +210,11 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testCheckinFullParkingSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			String newCar = STDCAR;
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot));
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
 			stdslot.setStatus(false);
-			ParkingTicket carticket = testparking.checkinParkingSlot(newCar, entryTime);
+			ParkingTicket carticket = testparking.checkinParkingSlot(CarType.STDCAR, entryTime);
 			fail("Exception not thrown");
 
 		} catch (NotAvailableSlotTypeException err) {
@@ -237,7 +231,7 @@ public class SpentTimeParkingTest {
 	@Test	
 	public void testCheckinWrongTypeParkingSlot1() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			String newCar = "TEST";
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot));
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
@@ -258,11 +252,10 @@ public class SpentTimeParkingTest {
 	@Test	
 	public void testCheckinWrongTypeParkingSlot2() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			String newCar = TKWCAR;
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot));
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
-			ParkingTicket carticket = testparking.checkinParkingSlot(newCar, entryTime);
+			ParkingTicket carticket = testparking.checkinParkingSlot(CarType.E20CAR, entryTime);
 			fail("Exception not thrown");
 
 		} catch (NotAvailableSlotTypeException err) {
@@ -279,8 +272,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testSetParkingSlots() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 	
 			SpentTimeParking testparking = new SpentTimeParking (parkingName);
 			testparking.setParkingSlots(slotsparkingtest);
@@ -297,8 +290,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testGetParkingSlots() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 		
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
 			
@@ -313,8 +306,8 @@ public class SpentTimeParkingTest {
 	@Test
 	public void testPrintExitTicket() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(stdslot, tkwslot)); 		
 			SpentTimeParking testparking = new SpentTimeParking (parkingName,slotsparkingtest);
 			ParkingTicket ticket = new ParkingTicket(stdslot, entryTime);

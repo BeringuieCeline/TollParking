@@ -26,18 +26,13 @@ mvn clean package
 
 ## Usage
 
-A car will be design by a string representing is type:
-	- "std" : standard parking slot for sedan cars (gasoline-powered)
-	- "20kw": parking slot with 20kw power supply for electric cars
-	- "50kw": parking slot with 50kw power supply for electric cars
-	
-	example:
+See ./src/Main.java
 
-```java
-			String stdcar = "std";
-			String e20car = "20kw";
-			String e50car = "50kw";
-```
+A car will be design by a string representing his type as define in the CarType Class:
+- CarType.STDCAR : standard parking slot for sedan cars (gasoline-powered)
+- CarType.E20CAR : parking slot with 20kw power supply for electric cars
+- CarType.E50CAR : parking slot with 50kw power supply for electric cars
+	
 
 ### Parking creation
 
@@ -52,10 +47,11 @@ You can create your parking directly filled by the constructor :
 example :
 
 ```java
-			FixedAmountParking myParking = new  FixedAmountParking(name,newparking);
+FixedAmountParking myParking = new  FixedAmountParking(name,newparking);
 
-where : * name: String which designs parking name,
-		* newparking is a List<ParkingSlot>
+where : 
+	* name: String which designs parking name,
+	* newparking is a List<ParkingSlot>
 ```
 
 or you can create it empty and fill it after:
@@ -63,29 +59,31 @@ or you can create it empty and fill it after:
 example :
 
 ```java
-			ParkingSlot stdslot = new ParkingSlot(stdcar,"A1");
-			ParkingSlot tkwslot = new ParkingSlot(e20car,"B1");
-			ParkingSlot fkwslot = new ParkingSlot(e50car,"B1");
-			List<ParkingSlot> myslotsparking = new ArrayList<>(Arrays.asList(stdslot, tkwslot, fkwslot)); 	
-			FixedAmountParking myparking = new FixedAmountParking (name);
-			myparking.setParkingSlots(myslotsparking);
+ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+ParkingSlot tkwslot = new ParkingSlot(CarType.E20CAR,"B1");
+ParkingSlot fkwslot = new ParkingSlot(CarType.E50CAR,"B1");
+List<ParkingSlot> myslotsparking = new ArrayList<>(Arrays.asList(stdslot, tkwslot, fkwslot)); 	
+FixedAmountParking myparking = new FixedAmountParking (name);
+myparking.setParkingSlots(myslotsparking);
 			
-where : * name: String which designs parking name
+where : 
+	* name: String which designs parking name
 ```
 
 ### Parking usage
 
 #### Check In
 
-When you check in a car, the parking will  block the slot and return a ticket which contains:
+When you check in a car, the parking will block the slot and return a ticket which contains:
 - check in time
 - allocated slot - If no slot available, an error is return: "Parking full: no place available"
 
 ```java
-ParkingTicket myticket = myparking.checkinParkingSlot(e20car, carEntryTime);
+ParkingTicket myticket = myparking.checkinParkingSlot(CarType.E20CAR, carEntryTime);
 
-where : * e20car is a string representing the car
-		* carEntryTime is a LocalDateTime - carEntryTime = LocalDateTime.now()
+where : 
+	* CarType.E20CAR is a string representing the car - define in CarType Class
+	* carEntryTime is a LocalDateTime - carEntryTime = LocalDateTime.now()
 ```
 
 #### Check Out
@@ -95,5 +93,6 @@ When you check out a car, the parking will return the bill and free the slot
 ```java
 Double bill  = myparking.checkoutParkingSlot(myticket, carExitTime);
 
-where : * carExitTime is a LocalDateTime - carExitTime = LocalDateTime.now()
+where : 
+	* carExitTime is a LocalDateTime - carExitTime = LocalDateTime.now()
 ```

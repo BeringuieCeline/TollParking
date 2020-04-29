@@ -9,16 +9,11 @@ import static org.junit.Assert.assertFalse;
 import exception.NotAvailableSlotTypeException;
 
 public class ParkingSlotTest {
-	
-	static String STDCAR = "std";
-	static String TKWCAR = "20kw";
-	static String FKWCAR = "50kw";
-
 
 	@Test
 	public void testParkingSlot() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 		} catch (NotAvailableSlotTypeException err) {
 			fail("Exception thrown");
 			System.out.println(err);
@@ -38,7 +33,7 @@ public class ParkingSlotTest {
 	@Test
 	public void testGetStatus() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			assertTrue(stdslot.getStatus());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
@@ -48,7 +43,7 @@ public class ParkingSlotTest {
 	@Test
 	public void testSetStatus() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			stdslot.setStatus(false);
 			assertFalse(stdslot.getStatus());
 		} catch (NotAvailableSlotTypeException err) {
@@ -59,8 +54,8 @@ public class ParkingSlotTest {
 	@Test
 	public void testGetparktype() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			assertEquals(STDCAR,stdslot.getparktype());
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			assertEquals(CarType.STDCAR,stdslot.getparktype());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
 		}
@@ -69,9 +64,9 @@ public class ParkingSlotTest {
 	@Test
 	public void testSetparktype() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
-			stdslot.setparktype(TKWCAR);
-			assertEquals(TKWCAR,stdslot.getparktype());
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
+			stdslot.setparktype(CarType.E20CAR);
+			assertEquals(CarType.E20CAR,stdslot.getparktype());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");;
 		}
@@ -80,7 +75,7 @@ public class ParkingSlotTest {
 	@Test
 	public void testSetWrongparktype() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			stdslot.setparktype("test");
 			fail("Exception not thrown");
 		} catch (NotAvailableSlotTypeException err) {
@@ -91,7 +86,7 @@ public class ParkingSlotTest {
 	@Test
 	public void testGetslotname() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			assertEquals("A1",stdslot.getslotname());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
@@ -101,7 +96,7 @@ public class ParkingSlotTest {
 	@Test
 	public void testSetslotname() {
 		try {
-			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
+			ParkingSlot stdslot = new ParkingSlot(CarType.STDCAR,"A1");
 			stdslot.setslotname("D7");
 			assertEquals("D7",stdslot.getslotname());
 		} catch (NotAvailableSlotTypeException err) {

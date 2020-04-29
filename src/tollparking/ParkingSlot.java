@@ -10,7 +10,7 @@ public class ParkingSlot {
 	private boolean status;
 	private String parktype;
 	private String slotname;
-	protected static final List<String> AVAILABLESLOTTYPES = new ArrayList<>(Arrays.asList("std", "20kw", "50kw"));
+	protected static final List<String> AVAILABLESLOTTYPES = new ArrayList<>(Arrays.asList(CarType.STDCAR, CarType.E20CAR, CarType.E50CAR));
 	protected static String notAvailableType = "Slot type not available, please choose one in the following list: std, 20kw or 50kw ";
 	
 	/**
