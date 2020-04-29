@@ -18,7 +18,7 @@ Access to the JavaDoc by openning the file : ./doc/index.html
 To create the build using Maven:
 
 ```
-git https://github.com/BeringuieCeline/TollParking.git
+git clone https://github.com/BeringuieCeline/TollParking.git
 cd TollParking
 mvn clean package
 ```
