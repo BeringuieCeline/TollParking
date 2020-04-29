@@ -1,18 +1,18 @@
 package tollparking;
+import exception.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
-import exception.*;
+
 
 public class ParkingSlot {
 	// Parking slot status - true if free otherwise false
 	private boolean status;
 	private String parktype;
 	private String slotname;
+	protected static final List<String> AVAILABLESLOTTYPES = new ArrayList<>(Arrays.asList("std", "20kw", "50kw"));
+	protected static String notAvailableType = "Slot type not available, please choose one in the following list: std, 20kw or 50kw ";
 	
-	public static List<String> AVAILABLESLOTTYPES = new ArrayList<>(Arrays.asList("std", "20kw", "50kw")); 
-	
-	static String notAvailableType = "Slot type not available, please choose one in the following list: std, 20kw or 50kw ";
 	/**
 	 * Create a new parking slot
 	 * 

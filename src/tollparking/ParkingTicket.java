@@ -3,8 +3,8 @@ import java.time.*;
 
 public class ParkingTicket {
    
-	public LocalDateTime entryTime;
-	public ParkingSlot parkslot;
+	private LocalDateTime entryTime;
+	private ParkingSlot parkslot;
 	
 	public ParkingTicket(ParkingSlot newparkslot, LocalDateTime newentryTime) {
 		entryTime = newentryTime;
@@ -40,6 +40,13 @@ public class ParkingTicket {
 	
 	@Override
 	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+
+		if (this.getClass() != o.getClass()) {
+			return false;
+		}
 		
 		ParkingTicket ticket = (ParkingTicket) o;
 		return ticket.entryTime.equals(entryTime) && ticket.parkslot.equals(parkslot);

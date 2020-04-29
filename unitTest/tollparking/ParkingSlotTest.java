@@ -1,16 +1,14 @@
 package tollparking;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDateTime;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import exception.NotAvailableSlotTypeException;
 
-class ParkingSlotTest {
+public class ParkingSlotTest {
 	
 	static String STDCAR = "std";
 	static String TKWCAR = "20kw";
@@ -18,7 +16,7 @@ class ParkingSlotTest {
 
 
 	@Test
-	void testParkingSlot() {
+	public void testParkingSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 		} catch (NotAvailableSlotTypeException err) {
@@ -28,7 +26,7 @@ class ParkingSlotTest {
 	}
  
 	@Test
-	void testWrongParkingSlot() {
+	public void testWrongParkingSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot("test","A1");
 			fail("Exception not thrown");
@@ -38,7 +36,7 @@ class ParkingSlotTest {
 	}
 	
 	@Test
-	void testGetStatus() {
+	public void testGetStatus() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			assertTrue(stdslot.getStatus());
@@ -48,7 +46,7 @@ class ParkingSlotTest {
 	}
 
 	@Test
-	void testSetStatus() {
+	public void testSetStatus() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			stdslot.setStatus(false);
@@ -59,28 +57,28 @@ class ParkingSlotTest {
 	}
 
 	@Test
-	void testGetparktype() {
+	public void testGetparktype() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			assertEquals(STDCAR,stdslot.getparktype());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
-		};
+		}
 	}
 
 	@Test
-	void testSetparktype() {
+	public void testSetparktype() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			stdslot.setparktype(TKWCAR);
 			assertEquals(TKWCAR,stdslot.getparktype());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");;
-		};
+		}
 	}
 	
 	@Test
-	void testSetWrongparktype() {
+	public void testSetWrongparktype() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			stdslot.setparktype("test");
@@ -91,24 +89,24 @@ class ParkingSlotTest {
 	}
 
 	@Test
-	void testGetslotname() {
+	public void testGetslotname() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			assertEquals("A1",stdslot.getslotname());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
-		};
+		}
 	}
 
 	@Test
-	void testSetslotname() {
+	public void testSetslotname() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			stdslot.setslotname("D7");
 			assertEquals("D7",stdslot.getslotname());
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
-		};
+		}
 	}
 
 }

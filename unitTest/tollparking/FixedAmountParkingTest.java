@@ -1,7 +1,11 @@
 package tollparking;
 import exception.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -10,11 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-class FixedAmountParkingTest {
+public class FixedAmountParkingTest {
 
 	static String STDCAR = "std";
 	static String TKWCAR = "20kw";
@@ -27,17 +27,8 @@ class FixedAmountParkingTest {
 	static LocalDateTime entryTime = LocalDateTime.of(2020,Month.APRIL,27,6,30,40,50000);
 	static LocalDateTime exitTime = LocalDateTime.of(2020,Month.APRIL,27,10,30,40,50000);
 	
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-	
-	
 	@Test
-	void testCreateParkingwithDublicateSlots(){
+	public void testCreateParkingwithDublicateSlots(){
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot1 = new ParkingSlot(TKWCAR,"B1");
@@ -48,11 +39,11 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			assertTrue(true);
-		};
+		}
 	}
 	
 	@Test
-	void testBilling() {
+	public void testBilling() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -68,12 +59,12 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 		
 	}
 
 	@Test
-	void testCheckoutParkingSlot() {
+	public void testCheckoutParkingSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -90,18 +81,18 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 		
 	}
 
 	@Test
-	void testGetParkingName(){
+	public void testGetParkingName(){
 			FixedAmountParking testparking = new FixedAmountParking (parkingName);
 			assertEquals(parkingName,testparking.getParkingName());
 	}
 
 	@Test
-	void testAddparkSlot() {
+	public void testAddparkSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -117,12 +108,12 @@ class FixedAmountParkingTest {
 			fail("ParkingSlotExistingException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 		
 	}
 
 	@Test
-	void testAddExistingparkSlot() {
+	public void testAddExistingparkSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -138,11 +129,11 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 	
 	@Test
-	void testRemoveparkSlot(){
+	public void testRemoveparkSlot(){
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -158,12 +149,12 @@ class FixedAmountParkingTest {
 			fail("NoParkingSlotException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 
 	}
 
 	@Test
-	void testRemoveEmptyparkSlot(){
+	public void testRemoveEmptyparkSlot(){
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");			
@@ -180,11 +171,11 @@ class FixedAmountParkingTest {
 			assertTrue(true);
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 
 	}
 	@Test
-	void testSpentTimeinParking() {
+	public void testSpentTimeinParking() {
 		try {
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
 			List<ParkingSlot> slotsparkingtest = new ArrayList<>(Arrays.asList(tkwslot)); 
@@ -198,11 +189,11 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 
 	@Test
-	void testCheckinParkingSlot() {
+	public void testCheckinParkingSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			String newCar = STDCAR;
@@ -223,10 +214,10 @@ class FixedAmountParkingTest {
 			fail("ParkingFullException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 	@Test
-	void testCheckinFullParkingSlot() {
+	public void testCheckinFullParkingSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			String newCar = STDCAR;
@@ -246,11 +237,11 @@ class FixedAmountParkingTest {
 			assertTrue(true);
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 	
 	@Test
-	void testCheckinWrongTypeParkingSlot1() {
+	public void testCheckinWrongTypeParkingSlot1() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			String newCar = "TEST";
@@ -269,11 +260,11 @@ class FixedAmountParkingTest {
 			fail("ParkingFullException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 	
 	@Test
-	void testCheckinWrongTypeParkingSlot2() {
+	public void testCheckinWrongTypeParkingSlot2() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			String newCar = TKWCAR;
@@ -292,11 +283,11 @@ class FixedAmountParkingTest {
 			assertTrue(true);
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 	
 	@Test
-	void testSetParkingSlots() {
+	public void testSetParkingSlots() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -309,12 +300,12 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 		
 	}
 
 	@Test
-	void testSetWrongParkingSlots() {
+	public void testSetWrongParkingSlots() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot1 = new ParkingSlot(TKWCAR,"B1");
@@ -326,12 +317,12 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			assertTrue(true);
-		};
+		}
 		
 	}
 	
 	@Test
-	void testGetParkingSlots() {
+	public void testGetParkingSlots() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -343,11 +334,11 @@ class FixedAmountParkingTest {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 
 	@Test
-	void testPrintExitTicket() {
+	public void testPrintExitTicket() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingSlot tkwslot = new ParkingSlot(TKWCAR,"B1");
@@ -355,13 +346,13 @@ class FixedAmountParkingTest {
 			FixedAmountParking testparking = new FixedAmountParking (parkingName,slotsparkingtest);
 			ParkingTicket ticket = new ParkingTicket(stdslot, entryTime);
 			Double price = testparking.billing(ticket, exitTime);
-			String exitTicket = "Ticket for " + stdslot.getslotname() + ". Entry date:" + entryTime + "Bill: " +price.toString()+ " €";
+			String exitTicket = "Ticket for " + stdslot.getslotname() + ". Entry date:" + entryTime + " Bill: " +price.toString()+ " euros";
 		
 			assertEquals(exitTicket,testparking.exitTicket(ticket, price));
 		} catch (NotAvailableSlotTypeException err) {
 			fail("NotAvailableSlotTypeException thrown");
 		} catch (NoUniqueParkingSlotException err) {
 			fail("NoUniqueParkingSlotException thrown");
-		};
+		}
 	}
 }

@@ -6,7 +6,7 @@ import exception.NoUniqueParkingSlotException;
 
 public class SpentTimeParking extends Parking{
 
-	public Double hourPrice;
+	private Double hourPrice;
 	
 	static Double parkHourPrice = 2.0;
 	

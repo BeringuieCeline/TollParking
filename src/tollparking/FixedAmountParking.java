@@ -47,7 +47,7 @@ public class FixedAmountParking extends Parking{
 	 * @param newparkHourPrice
 	 */		
 	public void setparkHourPrice(Double newparkHourPrice) {
-		parkHourPrice = newparkHourPrice;
+		hourPrice = newparkHourPrice;
 	}
 	
 	/**

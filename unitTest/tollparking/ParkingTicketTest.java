@@ -1,17 +1,17 @@
 package tollparking;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import exception.NotAvailableSlotTypeException;
 
-class ParkingTicketTest {
+public class ParkingTicketTest {
 
 	static String STDCAR = "std";
 	static String TKWCAR = "20kw";
@@ -21,7 +21,7 @@ class ParkingTicketTest {
 	static LocalDateTime exitTime = LocalDateTime.of(2020,Month.APRIL,27,10,30,40,50000);
 	
 	@Test
-	void testParkingTicket() {
+	public void testParkingTicket() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
@@ -32,7 +32,7 @@ class ParkingTicketTest {
 	}
 
 	@Test
-	void testGetEntryTime() {
+	public void testGetEntryTime() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
@@ -43,7 +43,7 @@ class ParkingTicketTest {
 	}
 
 	@Test
-	void testGetParkSlot() {
+	public void testGetParkSlot() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);
@@ -54,7 +54,7 @@ class ParkingTicketTest {
 	}
 
 	@Test
-	void testGetSlotname() {
+	public void testGetSlotname() {
 		try {
 			ParkingSlot stdslot = new ParkingSlot(STDCAR,"A1");
 			ParkingTicket carticket = new ParkingTicket(stdslot, entryTime);

@@ -96,7 +96,7 @@ public abstract class Parking {
 			parkingslots = newparkingslots;
 		} 
 		else{
-			
+			throw new NoUniqueParkingSlotException(slotNotUnique);
 		}
 		
 	}
@@ -234,9 +234,8 @@ public abstract class Parking {
 	 */
 	public ParkingTicket checkinParkingSlot(String car, LocalDateTime entryTime) throws ParkingSlotTypesNotExistingException,ParkingFullException{
 		ParkingSlot carSlot = findSlot(car);
-		ParkingTicket carTicket = createTicket(carSlot, entryTime);
 		
-		return carTicket;
+		return createTicket(carSlot, entryTime);
 	}
 	
 	/**
@@ -249,21 +248,20 @@ public abstract class Parking {
 	 */
 	public String exitTicket(ParkingTicket carticket, Double bill) {
 		String slotname = carticket.getSlotname();
-		String entrytime = carticket.entryTime.toString();
+		String entrytime = carticket.getEntryTime().toString();
 		
-		String exitTicket = "Ticket for " + slotname + ". Entry date:" + entrytime + " Bill: " +bill.toString()+ " €"; 
-		
-		return exitTicket;
+		return "Ticket for " + slotname + ". Entry date:" + entrytime + " Bill: " +bill.toString()+ " euros";
 	}
 	
 	public String toString() {
 		
-		String parkingslotsString = "Parking slots for "+ parkingName +" : ";
+		StringBuilder parkingslotsString = new StringBuilder("Parking slots for ");
+		parkingslotsString.append(parkingName + " : ");
 		for ( ParkingSlot parkslot:parkingslots) {
-			parkingslotsString = parkingslotsString + parkslot + " - ";
-			}
+			parkingslotsString.append(parkslot + " - ");
+		}
 		
-		return parkingslotsString;
+		return parkingslotsString.toString();
 	}
 	
 }
